@@ -1,0 +1,25 @@
+*{ margin:0; padding:0; border:0; box-sizing:border-box; }
+body{width:100%; height:100%; background-color:#c4c4bf;}
+		
+#wrap{width:960px; min-height:1px; margin:0 auto; background-color:#fff; padding-bottom:5px;}
+	header{width:100%; height:60px; line-height:56px; text-align:center; background-color:#79b2c3; color:#fff;}
+	
+	#con{width:900px; min-height:1px; position:relative; top:0; background-color:#79b2c3; margin:30px auto; padding-top:30px; padding-bottom:30px; text-align:center;}
+	#con img{margin-bottom:30px;}
+	#con h3{font-size:50px; color:#fff; margin-bottom:40px;}
+	#con p{font-size:20px; color:#fff; margin-top:12px;}
+	#con > .wrap{width:780px; min-height:200px; position:relative; margin: 40px auto 0; background-color:#fff; display:flex; flex-direction:row; justify-content:space-around; flex-wrap: wrap;}
+	#con > div > div { width: 250px; height: 300px; }
+	#con > div > div > p { color: #79b2c3; }
+	#con > div > div > p:first-child { margin-bottom: 10px; color: #79b2c3; font-weight: bold; }
+	#con > div > div > div { width: 190px; height: 200px; background: #fff; border: 1px solid #79b2c3; margin: auto; }
+	#con select { padding: 0 10px 5px }
+	
+	
+	input[type=text],input[type=password]{width:120px; height:20px; padding:10px;}
+	input[type=button]{width:50px; height:22px; padding-bottom:3px; background-color:#fff; cursor:pointer;}
+	button{padding:2px 12px 4px 12px; background-color:#FF0; font-weight:bold; border-radius:10px; cursor:pointer; }
+		
+	.btn input[type=button]{ color:#f30; font-size:25px; padding-bottom: 35px; }
+	.btn button{ background-color:#f90; color:#fff; margin-bottom:10px;}
+	.btn  { width: 780px; background: #fff; margin: 0 auto 20px; padding: 20px 0px 30px; }
