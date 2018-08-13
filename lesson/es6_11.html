@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	비동기 코드를 동기식 코드로 변경
+
+	<script type="text/javascript">
+		function getURL (url) {
+			return new Promise (function (res) {
+				$.get(url).done(res)
+			})
+		}
+
+		getURL(url)
+		.then(function (data) {
+				console.log('test1')
+			return new Promise(function (res) {
+				var resData.data.a
+				res(resData)
+			})
+		})
+		.then(function (data) {
+			console.log(resData)
+		})
+	</script>
+</body>
+</html>

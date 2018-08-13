@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		ul,li{list-style: none;}
+		a{text-decoration: none;}
+		.slide{width: 1000px; margin: 0 auto;}
+		.slide ul{width:300%; display:flex; transition:all 1s;}
+		.slide li {width:33.333%; height:400px;}
+		.slide li:nth-child(1) {background:#faa;}
+		.slide li:nth-child(2) {background:#afa;}
+		.slide li:nth-child(3) {background:#aaf;}
+	</style>
+</head>
+<body>
+	<div class="slide">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<a href="#" class="arrow left">&lt;</a>
+		<a href="#" class="arrow right">&gt;</a>
+
+		<p class="pos">
+			<a href="$" class="active">1</a>
+			<a href="$">2</a>
+			<a href="$">3</a>
+		</p>
+	</div>
+	
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+		class Test {
+			constructor(){
+				this.name = "테스트입니다.";
+			}
+
+			setName(name){
+				this.name = name;
+			}
+
+			static Init(){
+				Test.instance = new Test();
+			}
+
+			static getInstance(){
+				return Test.instance;
+			}
+		}
+		const test1 = new Test();
+		const test2 = new Test();
+		const test3 = new Test();
+		console.log(test1.name. test2.name, test3.name);
+		console.log(test1 ===test1, test2 ===test2 ,test3 ===test3,);
+		test1.setName("수정1");
+		console.log(test1.name, test2.name, test3.name);
+		test1.setName("수정2");
+		console.log(test1.name, test2.name, test3.name);
+		test1.setName("수정3");
+		console.log(test1.name, test2.name, test3.name);
+
+		// Test.Init();
+		// const test4 = Test.getInstance();
+		// const test5 = Test.getInstance();
+		// const test6 = Test.getInstance();
+
+		// console.log(test4 == test5);
+		// console.log(test4 == test6);
+		// console.log(test5 == test6);
+
+
+		Test.Init();
+		const test4 = Test.getInstance();
+		const test5 = Test.getInstance();
+		const test6 = Test.getInstance();
+		console.log(test4.name, test5.name, test6.name);
+		console.log(test4 === test5, test4 === test6, test5 === test6);
+		test4.setName("수정1");		
+		console.log(test4.name, test5.name, test6.name);
+		test5.setName("수정2");
+		console.log(test4.name, test5.name, test6.name);
+		test6.setName("수정3");
+		console.log(test4.name, test5.name, test6.name);
+
+
+	</script>
+</body>
+</html>

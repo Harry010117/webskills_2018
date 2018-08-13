@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		ul,li{list-style: none;}
+		a{text-decoration: none;}
+		.slide{width: 1000px; margin: 0 auto;}
+		.slide ul{width:300%; display:flex; transition:all 1s;}
+		.slide li {width:33.333%; height:400px;}
+		.slide li:nth-child(1) {background:#faa;}
+		.slide li:nth-child(2) {background:#afa;}
+		.slide li:nth-child(3) {background:#aaf;}
+	</style>
+</head>
+<body>
+	<div class="slide">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<a href="#" class="arrow left">&lt;</a>
+		<a href="#" class="arrow right">&gt;</a>
+
+		<p class="pos">
+			<a href="$" class="active">1</a>
+			<a href="$">2</a>
+			<a href="$">3</a>
+		</p>
+	</div>
+	
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+		function slide(){
+			let pos = 0;
+			let timer;
+			const len = $(".slide li").length;
+			const play = () => {
+				clearTimeout(timer);
+
+				if(++pos >= len) pos = 0;
+				else if(pos < 0) pos = len -1;
+				$(".slide .pos a.active").removeClass("active");
+				$(".slide .pos a").eq(pos).addClass("active");
+				$('.slide ul').css("margin-left", -pos*100+"%");
+				timer = setTimeout(play, 2000);
+			}
+
+			$(document).on("click", ".slide .pos a", function(){
+				pos = $(this),index() -1;
+				play();
+			}).on("click", ".arrow", function(){
+				if($(this).hasClass("left")) pos -= 2;
+				play();
+			});
+			timer = setTimeout(play, 2000);
+		}
+
+		slide();
+		$(slide)
+		.on("click", "a[href=#]", ()=>false);
+	</script>
+</body>
+</html>

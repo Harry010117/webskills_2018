@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>경
+
+	<script type="text/javascript">
+		let num = 10
+		function promise () {
+			return new Promise (res => setTimeout( () => {
+				res(num => num*10)
+			}, 500))
+		}
+		(async () => {
+			const cb1 = await promise()
+			console.log(cb1(100));
+			const cb2 = await promise()
+			console.log(cb2(200));
+		})()
+	</script>
+</body>
+</html>

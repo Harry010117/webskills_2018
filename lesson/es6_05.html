@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	참조 매개변수
+
+	<script type="text/javascript">
+		var obj = { a : 1, b : 2 }
+
+		function test (obj_ref) {
+			obj_ref.a = 10
+			obj_ref.c = 5
+		}
+		test(obj);
+
+		console.log(obj);	
+
+		let obj2 = obj;
+		obj2.d = 555
+		obj2 = null
+		console.log(obj);
+
+		let arr = [1,2,3,4,5,6,7,8,9,10];
+
+		function arr_test (arr2) {
+			arr2.push(11);
+		}
+		console.log(arr);
+		arr_test(arr);
+		console.log(arr);
+		arr_test(arr.slice());
+
+		console.log(arr)
+		console.log(arr.slice(2, 4))
+	</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	비동기 코드를 동기식 코드로 변경
+
+	<script type="text/javascript">
+		function promise (callback) {
+			return new Promise(function (resolve, reject) {
+				callback(resolve)	// f1
+			})
+		}
+		
+		function f1 (callback) {
+			return new Promise(function(resolve){
+
+				setTimeout(function(){
+					console.log(1)
+					callback()
+				}, 1000)
+			})
+		}
+
+		(function () {
+			return new Promise(function (resolve){
+				console.log('promise');
+				resolve()
+			})
+		}())
+		.then(function () {
+			return new Promise 
+		})
+
+		// (
+		// 	function (callback){
+		// 		return new Promise(function (resolve, reject)){
+		// 			callback(resolve)
+		// 		}
+		// 	}
+		// 	( 
+		// 		function(callback) { 
+		// 			console.log('test') 
+		// 			callback()
+		// 		}
+		// 	)
+		// ).then(function () { console.log('test2') })
+	</script>
+</body>
+</html>

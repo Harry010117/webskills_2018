@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	클로저
+
+	<script type="text/javascript">
+		var a = function () {
+			var i = 1;
+			return function () { return ++i; }
+		}
+
+		var b = a();
+
+		var c = function () {
+			var i = 1;
+			return ++i;
+		}
+
+		b();b();b();b();b();b();b();b();b();b();b();b();b();
+		c();c();c();c();c();c();c();c();c();c();c();c();c();
+
+		// var layerPopup = (function() {
+		// 	const layerTemplate  = `
+		// 		<div id="layer">
+		// 			<div>
+		// 				<a href="#" class="close">X</a>
+		// 				<div class="content">
+		// 				</div>
+		// 			</div>
+		// 		</div>
+		// 	`
+
+		// 	return function () {
+		// 		$(layerTemplate).find('content').html('test').appendTo('body');
+		// 	}
+		// }()
+		// layer();
+		
+		var func1 = (a, b) => a + b
+		var func2 = (a) => a * a
+
+		console.log(func1(1, 2));
+		console.log(func2(10));
+
+
+		const arr = [36,325325,3467,2345,35,35,4345,345342,5];
+		var obj = [
+			{idx : 1, subject : '가나다'} ,
+			{idx : 2, subject : '자야녀'} ,
+			{idx : 3, subject : '바여냐'} ,
+			{idx : 4, subject : '닺야'} ,
+			{idx : 5, subject : '리베자'} ,
+		]
+		arr.sort((a, b) => a - b);
+		console.log(arr);
+
+		arr.sort((a, b) => a - b);
+		console.log(arr)
+
+		const obj_asc = obj.slice().sort((a, b) => a.subject < b.subject ? 1 : -1);
+		console.log(obj_asc);
+
+		const obj_desc = obj.slice().sort((a, b) => a.subject < b.subject ? -1 : 1);
+		console.log(obj_desc);
+	</script>
+</body>
+</html>

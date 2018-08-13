@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	비동기 코드를 동기식 코드로 변경
+
+	<script type="text/javascript">
+		class DataBase {
+			constructor () {
+				
+			}
+
+			setDB () {
+				// const store, idb, transaction, req
+				const req = indexedDB.open('20180812_2', 6)
+				return new Promise (resolve => {
+					req.onupgradeneeded = event => {
+						this.idb = event.target.result;
+						store = this.idb.createObjectStore('board', {keyPath : 'idx', autoIncrement : true })
+						store.createIndex('name', 'name', {unique : false})
+						store.createIndex('subject', 'subject', {unique : false})
+						store.createIndex('content', 'content', {unique : false})
+						store.createIndex('date', 'date', {unique : false})
+						this.store = store;
+					}
+
+					req.onsuccess = event => {
+						this.idb = event.target.result
+
+						resolve()
+					}
+
+					this.req = req
+				})
+			}
+
+			getTable (table) {
+				return this.res = this.idb.transaction([table], "readwrite").objectStore(table)
+			}
+
+			insert (option) {
+				const res = this.getTable(option.table).add(option.column)
+				return new Promise(resolve => { res.onsuccess = resolve })
+			}
+
+			update (option) {
+				const res = this.getTable(option.table).put(option.column)
+				return new Promise(resolve => { res.onsuccess = resolve })
+			}
+
+			delete (option) {
+				const res = this.getTable(option.table).delete(option.idx)
+				return new Promise(resolve => { res.onsuccess = resolve })
+			}
+
+			fetch (option) {
+				const res = this.getTable(option.table).getAll()
+				return new Promise(resolve => resolve && (res.onsuccess = resolve));
+			}
+		}
+
+		const db = new DataBase()
+
+		console.log(db);
+
+		db.setDB()
+		.then(() => db.fetch({table: 'board', idx: 1}))
+		.then(() => db.fetchAll())
+		.then(event => console.log(event.target.result))
+	</script>
+</body>
+</html>
